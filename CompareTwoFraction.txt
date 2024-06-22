@@ -1,0 +1,46 @@
+// User function Template for Java
+
+class Solution {
+
+     String compareFrac(String str) {
+         
+         // split the string on the basis of , delimiter
+        String[] parts = str.split(",");
+
+        // taking both fraction value into 2 seprate variables
+        String part1 = parts[0].trim();
+        String part2 = parts[1].trim();
+        
+        // calling the function which converts 
+        // the string (having the fraction value in the form of  string ) 
+        // into double value
+        double value1 = parseFraction(part1);
+        double value2 = parseFraction(part2);
+        
+        if (value1 > value2) {
+            return part1;
+        } else if (value2 > value1) {
+            return part2;
+        } else {
+            return "equal";
+        }
+    }
+
+    public double parseFraction(String fraction) {
+        
+        //splitting the fraction with / as delimeter
+        String[] fractionParts = fraction.split("/");
+        
+        //converting the numerator part of the fraction into the int
+        int numerator = Integer.parseInt(fractionParts[0].trim());
+        int denominator = Integer.parseInt(fractionParts[1].trim());
+        
+        return (double) numerator / denominator;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        String result = solution.compareFrac("5/6, 3/4");
+        System.out.println(result);
+    }
+}
